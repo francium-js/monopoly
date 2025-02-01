@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 export const useWindowWidth = () => {
-  const breakpoint = 1024;
+  const breakpoint = 1024
 
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= breakpoint);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= breakpoint)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight)
 
   useEffect(() => {
     const onResize = () => {
-      setIsDesktop(window.innerWidth >= breakpoint);
-      setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight);
-    };
+      setIsDesktop(window.innerWidth >= breakpoint)
+      setWindowWidth(window.innerWidth)
+      setWindowHeight(window.innerHeight)
+    }
 
-    window.addEventListener("resize", onResize);
+    window.addEventListener('resize', onResize)
 
     return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
 
-  return { isDesktop, setWindowWidth, windowWidth, windowHeight };
-};
+  return { isDesktop, setWindowWidth, windowWidth, windowHeight }
+}
