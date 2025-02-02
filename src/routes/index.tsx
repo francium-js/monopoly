@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
+import GameProvier from 'src/contexts/game-provider'
 import AuthLayout from 'src/layouts/Auth'
 import ErrorPage from 'src/pages/Error'
 import GamePage from 'src/pages/Game'
@@ -9,7 +10,14 @@ export const browserRouters = createBrowserRouter([
   {
     children: [
       { element: <HomePage />, path: RoutesEnum.HOME },
-      { element: <GamePage />, path: RoutesEnum.GAME },
+      {
+        element: (
+          <GameProvier>
+            <GamePage />
+          </GameProvier>
+        ),
+        path: RoutesEnum.GAME,
+      },
     ],
     element: <AuthLayout />,
     errorElement: <ErrorPage />,

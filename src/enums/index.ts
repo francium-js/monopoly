@@ -6,3 +6,10 @@ export enum EnvModEnum {
 export enum ModalsEnum {
   TEMPLATE = 'template',
 }
+
+export enum CardSideEnum {
+  NORTH = 'north',
+  EAST = 'east',
+  SOUTH = 'south',
+  WEST = 'west',
+}

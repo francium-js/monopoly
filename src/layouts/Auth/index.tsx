@@ -1,9 +1,12 @@
 import { Outlet } from 'react-router-dom'
+import ModalProvier from 'src/contexts/modal-provider'
 
 const AuthLayout = (): JSX.Element => {
   return (
     <div>
-      <Outlet />
+      <ModalProvier>
+        <Outlet />
+      </ModalProvier>
     </div>
   )
 }
