@@ -4,26 +4,29 @@ import { AngleCardModelProps } from 'src/models-components/AngleCard/types'
 import { RoundedBox } from '@react-three/drei'
 import * as THREE from 'three'
 import gsap from 'gsap'
+import { ThreeEvent } from '@react-three/fiber'
 
 const AngleCardModel = ({ index }: AngleCardModelProps) => {
   const angleCardModelRef = useRef<THREE.Mesh>(null)
   const { angleCardParams } = useGame()
   const [isHovered, setIsHovered] = useState(false)
 
-  const handlePointerOver = () => {
+  const handlePointerEnter = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation()
     setIsHovered(true)
     document.body.style.cursor = 'pointer'
 
     if (angleCardModelRef.current) {
       gsap.to(angleCardModelRef.current.position, {
-        y: 0.05,
+        y: 0.025,
         duration: 0.2,
         ease: 'power1.out',
       })
     }
   }
 
-  const handlePointerOut = () => {
+  const handlePointerLeave = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation()
     setIsHovered(false)
     document.body.style.cursor = 'default'
 
@@ -38,8 +41,8 @@ const AngleCardModel = ({ index }: AngleCardModelProps) => {
 
   return (
     <mesh
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
+      onPointerOver={handlePointerEnter}
+      onPointerOut={handlePointerLeave}
       ref={angleCardModelRef}
       position={[0, 0, 0]}
       castShadow
@@ -56,7 +59,7 @@ const AngleCardModel = ({ index }: AngleCardModelProps) => {
         <meshStandardMaterial
           color={
             isHovered
-              ? 'lightblue'
+              ? 'rgb(200,200,200)'
               : `rgb(${index * 20 + 120},${index * 20 + 120},${index * 20 + 120})`
           }
           roughness={0.6}

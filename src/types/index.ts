@@ -16,3 +16,7 @@ export type FormChoiceT = {
   correct: boolean
   id: number
 }
+
+export type CardInfoMapT = {
+  color?: string
+}

@@ -11,7 +11,7 @@ const LightsModel = () => {
       <pointLight
         ref={pointLightModelRef}
         position={[0, 2, 0]}
-        intensity={2.5}
+        intensity={1.5}
         distance={5}
         castShadow
         color={0xffffff}

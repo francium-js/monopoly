@@ -6,15 +6,16 @@ import Modals from 'src/features/modals'
 
 const GameProvier = ({ children }: PropsWithChildren): JSX.Element => {
   // const roadMap
-  const angleCardParams = useMemo(() => new CubeTemplate(0.5, 0.05), [])
+  const cardsHight = 0.04
+  const angleCardParams = useMemo(() => new CubeTemplate(0.5, cardsHight), [])
 
   const cardParams = useMemo(
-    () => new CubeTemplate(0.3, 0.05, angleCardParams.width),
+    () => new CubeTemplate(0.3, cardsHight, angleCardParams.width),
     [angleCardParams.width],
   )
 
   const mainBoardParams = useMemo(
-    () => new CubeTemplate(angleCardParams.width * 2 + cardParams.width * 9, 0.06),
+    () => new CubeTemplate(angleCardParams.width * 2 + cardParams.width * 9, 0.08),
     [cardParams.width, angleCardParams.width],
   )
 
